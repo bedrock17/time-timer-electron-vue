@@ -10,20 +10,29 @@
       <div id="timerTime"></div>
     </div>
     <button type="button" class="btn btn-primary" autocomplate="off" data-loading-text="jquery with bootstrap" @click="clickBtn"> Hello</button>
+    {{ duration }}
   </div>
 </template>
 
 <script>
+const DURATION_IN_SECONDS = 60 * 60
+import $ from 'jquery'
+
 export default {
   name: 'HelloWorld',
+  data : function () {
+    return {
+      duration : DURATION_IN_SECONDS
+    }
+  }
+  ,
   props: {
     
   },
   methods: {
     clickBtn (event) {
       $(event.target).button('loading')
-      console.log("click!")
-      
+
       setTimeout(function() {
         $(event.target).button('reset')
       }, 1000);
